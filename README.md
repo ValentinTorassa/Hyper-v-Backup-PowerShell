@@ -1,6 +1,8 @@
 # Backup-HyperV-Script
 
-**Backup-HyperV-Script** es un script en **PowerShell** que facilita la copia automática de la carpeta `D:\Hyper-V` hacia un directorio de destino, conservando las copias durante un número determinado de días (por defecto, 8). La idea es ofrecer un método sencillo para mantener respaldos recientes de máquinas virtuales y eliminar automáticamente los más antiguos.
+**Backup-HyperV-Script** es un script en **PowerShell** que facilita la copia automática de la carpeta `D:\Hyper-V o la colocada` hacia un directorio de destino, conservando las copias durante un número determinado de días (por defecto, 8). La idea es ofrecer un método sencillo para mantener respaldos recientes de máquinas virtuales y eliminar automáticamente los más antiguos.
+
+### Autor: Valentin Torassa Colombero
 
 ## Características
 
