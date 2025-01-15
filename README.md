@@ -1,4 +1,4 @@
-## **Backup-HyperV-Script (Versión Avanzada)**
+## **Backup-HyperV-Script**
 
 **Backup-HyperV-Script** es un script en **PowerShell** diseñado para **copiar y comprimir** automáticamente la carpeta que contiene máquinas virtuales (por defecto, `C:\Maquinas Virtuales`). A diferencia de la versión anterior, ahora **primero** copia el contenido a un **disco local de staging** (por ejemplo, `D:\TempBackup`) para agilizar la compresión, y **luego** mueve el `.zip` resultante al **disco de backup** (por defecto, `B:\Backup`). También **limpia** los respaldos de más de 8 días y **registra** todas las acciones en un archivo de log.
 
