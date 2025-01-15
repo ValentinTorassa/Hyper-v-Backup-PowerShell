@@ -15,7 +15,7 @@ $LocalStagingPath = "D:\USBTempBackup"
 # Ruta para almacenar los backups
 $BackupPath = "E:\BackupUSB"
 # Ruta del archivo log
-$LogFile = "D:\USBTempBackup\BackupLogUSB.txt"
+$LogFile = "D:\USBTempBackup\BackupLog.txt"
 
 $SevenZipExe = "C:\Program Files\7-Zip\7z.exe"
 
@@ -34,7 +34,7 @@ if (!(Test-Path $BackupPath)) {
 
 if (!(Test-Path $SourceFolder)) {
     Add-Content $LogFile "$(Get-Date): ERROR - La carpeta de origen $SourceFolder no existe."
-    Write-Host "ERROR: La carpeta de origen no existe. Verifique la ruta."
+    Write-Host "ERROR: La carpeta de origen no existe. Verifique la ruta"
     Exit 1
 }
 
@@ -67,9 +67,17 @@ if ($LASTEXITCODE -eq 0) {
     Add-Content $LogFile "$(Get-Date): Carpeta temporal eliminada ($DestinationFolderLocal)."
 
     $FinalZipPath = Join-Path $BackupPath $ZipFileName
-    Move-Item -Path $ZipFilePathLocal -Destination $FinalZipPath -Force
+   
+    try {
+        Move-Item -Path $ZipFilePathLocal -Destination $FinalZipPath -Force
+        Add-Content $LogFile "$(Get-Date): Archivo ZIP movido a $FinalZipPath."
+    }
+    catch {
+        Add-Content $LogFile "$(Get-Date): ERROR - EL DISCO E NO SE ENCUENTRA CONECTADO. No se pudo mover el archivo .zip a $FinalZipPath. $_"
+        Write-Host "ERROR: No se pudo mover el archivo. Revise permisos o la ruta. PROBABLEMENTE EL DISCO E NO SE ENCUENTRA CONECTADO."
+        Exit 1
+    }
 
-    Add-Content $LogFile "$(Get-Date): Archivo ZIP movido a $FinalZipPath."
 } else {
     Add-Content $LogFile "$(Get-Date): ERROR - Falló la compresión con 7-Zip. Código: $LASTEXITCODE."
     Write-Host "ERROR: Falló la compresión. Verifique el log."
