@@ -1,5 +1,5 @@
 ################################################################################
-# Script: Backup-Produccion.ps1
+# Script: BackupContingencia.ps1
 # Objetivo: Ejecutar un backup diario de la carpeta "C:\Maquinas Virtuales", 
 #           comprimirlo primero en un disco local, 
 #           mover el .zip resultante a B:\Backup, 

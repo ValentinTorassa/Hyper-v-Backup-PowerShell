@@ -1,5 +1,5 @@
 ################################################################################
-# Script: Backup-Produccion.ps1
+# Script: BackupUSB.ps1
 # Objetivo: Ejecutar un backup diario de la carpeta "C:\Maquinas Virtuales", 
 #           comprimirlo primero en un disco local, 
 #           mover el .zip resultante a B:\Backup, 
@@ -15,7 +15,7 @@ $LocalStagingPath = "D:\USBTempBackup"
 # Ruta para almacenar los backups
 $BackupPath = "E:\BackupUSB"
 # Ruta del archivo log
-$LogFile = "B:\BackupLog.txt"
+$LogFile = "D:\USBTempBackup\BackupLogUSB.txt"
 
 $SevenZipExe = "C:\Program Files\7-Zip\7z.exe"
 
