@@ -13,13 +13,13 @@
 # Carpeta de origen
 $SourceFolder = "D:\Maquinas Virtuales"
 
-# Staging local (donde se copiará y comprimirá)
+# Staging local
 $LocalStagingPath = "D:\USBTempBackupDATOS"
 
-# Destino 1 (USB)
+# Destino 1 
 $BackupPathUSB = "E:\BackupUSBDATOS"
 
-# Destino 2 (Carpeta de red)
+# Destino 2 
 $BackupPathNetwork = "\\Srvg10pus\solo copia de backups\BackupDATOS"
 
 # Log principal
@@ -28,7 +28,6 @@ $LogFile = "D:\USBTempBackupDATOS\BackupLogDATOS.txt"
 # Ruta ejecutable 7-Zip
 $SevenZipExe = "C:\Program Files\7-Zip\7z.exe"
 
-# --- Inicio de log ---
 Add-Content $LogFile "--------------------------------------"
 Add-Content $LogFile "$(Get-Date): Iniciando script de backup DATOS unificado."
 Add-Content $LogFile "--------------------------------------"
@@ -100,7 +99,6 @@ $ZipFilePathLocal = Join-Path $LocalStagingPath $ZipFileName
 
 Write-Host "Comprimiendo carpeta localmente en: $ZipFilePathLocal ..."
 
-# Ajusta -mx1 si deseas compresión rápida (menos ratio)
 & "$SevenZipExe" 'a' '-tzip' "`"$ZipFilePathLocal`"" "`"$DestinationFolderLocal\*`"" -r -bsp1 -mx1
 
 if ($LASTEXITCODE -eq 0) {

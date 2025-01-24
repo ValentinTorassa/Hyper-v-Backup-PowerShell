@@ -11,22 +11,21 @@
 # --- Variables de configuración ---
 
 # Carpeta que se desea respaldar
-$SourceFolder      = "C:\Maquinas Virtuales"
+$SourceFolder = "C:\Maquinas Virtuales"
 
-# Ruta local de staging (disco rápido donde se realizará la copia y compresión)
+# Ruta local de staging 
 $LocalStagingPath  = "D:\TempBackup"
 
 # Destinos finales:
-$BackupPathUSB     = "E:\BackupUSB"              # Ej: USB
-$BackupPathNetwork = "\\Srvg10pus\solo copia de backups\Backup"  # Ej: ruta de contingencia
+$BackupPathUSB = "E:\BackupUSB"
+$BackupPathNetwork = "\\Srvg10pus\solo copia de backups\Backup"
 
-# Ruta del archivo log principal (puede estar en staging o en otra ubicación)
-$LogFile           = "D:\TempBackup\BackupLog_Unificado.txt"
+# Ruta del archivo log principal 
+$LogFile = "D:\TempBackup\BackupLog_Unificado.txt"
 
 # Ruta del ejecutable de 7-Zip
-$SevenZipExe       = "C:\Program Files\7-Zip\7z.exe"
+$SevenZipExe = "C:\Program Files\7-Zip\7z.exe"
 
-# --- Inicio de registro en el log ---
 Add-Content $LogFile "--------------------------------------"
 Add-Content $LogFile "$(Get-Date): Iniciando script de backup unificado."
 Add-Content $LogFile "--------------------------------------"
@@ -102,7 +101,7 @@ $ZipFileName      = "$BackupName.zip"
 $ZipFilePathLocal = Join-Path $LocalStagingPath $ZipFileName
 
 Write-Host "Comprimiendo carpeta localmente en: $ZipFilePathLocal ..."
-# Añade -mx1 para compresión rápida o -m0=Copy para sin compresión
+
 & "$SevenZipExe" 'a' '-tzip' "`"$ZipFilePathLocal`"" "`"$DestinationFolderLocal\*`"" -r -bsp1 -mx1
 
 if ($LASTEXITCODE -eq 0) {
